@@ -1,0 +1,286 @@
+        .rozita_calendar {
+            /*overflow-x: auto;*/
+            /*white-space: nowrap;*/
+            overflow-x: scroll;
+            overflow-y: hidden;
+            /*width: 100%;
+            height: auto;*/
+        }
+
+
+        .rozita_calendar table {
+            font-size: 14px;
+            color: #333333;
+            border-width: 1px;
+            border-color: #666666;
+            border-collapse: collapse;
+        }
+
+        .rozita_calendar table th {
+            /*font-size: 12px;
+                    height: auto;
+                    min-width: 62px;*/
+        }
+
+        .rozita_calendar table td {
+            font-size: 12px;
+            height: auto;
+            /*-moz-min-width: 62px;
+                    -ms-min-width: 62px;
+                    -o-min-width: 62px;
+                    -webkit-min-width: 62px;
+                    min-width: 62px;*/
+            /*min-width: 62px;*/
+
+            /*width: 75px;*/
+            min-width: 75px;
+        }
+
+
+
+        /*.rozita_calendar table th {
+                    border-width: 1px;
+                    padding: 8px;
+                    border-style: solid;
+                    border-color: #666666;
+                    background-color: #dedede;
+                }*/
+
+
+        .rozita_calendar table td {
+            border-color: #999;
+            background-color: #ffffff;
+            text-align: center;
+            word-wrap: break-word;
+        }
+
+        .rozita_calendar table thead td {
+            padding-right: 12px;
+            padding-left: 12px;
+            padding-top: 3px;
+            padding-bottom: 2px;
+        }
+
+        .rozita_calendar table tbody td {
+            padding-right: 12px;
+            padding-left: 12px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
+        .rozita_calendar .cell_root {
+            /*border: 2px solid #222;*/
+        }
+
+        .rozita_calendar .spd_row .spd_day {
+            font-size: 10px;
+        }
+
+        .rozita_calendar .header_row .spd_holiday {
+            /*border: 1px solid red !important;*/
+            background: lightpink !important;
+        }
+
+        .rozita_calendar .header_row .spd_event {
+        }
+
+        .rozita_calendar .header_row .cell_friday {
+            background: #ccc;
+        }
+
+        .rozita_calendar thead .month-01 {
+            background: #8EC690;
+        }
+
+        .rozita_calendar thead .month-02 {
+            background: #B0D18D;
+        }
+
+        .rozita_calendar thead .month-03 {
+            background: #D9DF84;
+        }
+
+        .rozita_calendar thead .month-04 {
+            background: #FACB72;
+        }
+
+        .rozita_calendar thead .month-05 {
+            background: #FA8D72;
+        }
+
+        .rozita_calendar thead .month-06 {
+            background: #F49E87;
+        }
+
+        .rozita_calendar thead .month-07 {
+            background: #FCBA66;
+        }
+
+        .rozita_calendar thead .month-08 {
+            background: #FFD166;
+        }
+
+        .rozita_calendar thead .month-09 {
+            background: #FEE785;
+        }
+
+        .rozita_calendar thead .month-10 {
+            background: #78B7EF;
+        }
+
+        .rozita_calendar thead .month-11 {
+            background: #67C3EF;
+        }
+
+        .rozita_calendar thead .month-12 {
+            background: #66CDDA;
+        }
+		
+		
+		
+		    .rozita_calendar .tam_tour_mode_@(((int)Enums.TourModes.Individual).ToString()) {
+        /*background: #dae8f8;*/
+    }
+
+    .rozita_calendar .tam_tour_mode_@(((int)Enums.TourModes.TravelAgency).ToString()) {
+        /*background: #f3c4ac;*/
+    }
+
+    .rozita_calendar .tam_tour_status_@(((int)Enums.TourStatuses.Correspondence).ToString()) {
+        background: #e3e3e3;
+    }
+
+    .rozita_calendar .tam_tour_status_@(((int)Enums.TourStatuses.Canceled).ToString()) {
+        background: #f6b4ff;
+    }
+
+    .rozita_calendar .tam_tour_status_@(((int)Enums.TourStatuses.Operations).ToString()) {
+        background: #87e1ff;
+    }
+
+    .rozita_calendar .tam_tour_status_@(((int)Enums.TourStatuses.Current).ToString()) {
+        background: #e7ff80;
+    }
+
+    .rozita_calendar .tam_tour_status_@(((int)Enums.TourStatuses.Finished).ToString()) {
+        background: #ffd368;
+    }
+
+    .rozita_calendar .tam_tour_status_@(((int)Enums.TourStatuses.Payoff).ToString()) {
+        background: #9d9d9d;
+    }
+
+
+     .rozita_calendar .tam_req_type_@(((int)Enums.RequestTypes.Reservation).ToString()) {
+         /*background: #d9d9d9;*/
+         background: #f0ff01;
+     }
+
+    .rozita_calendar .tam_req_type_@(((int)Enums.RequestTypes.ReserveCorrection).ToString()) {
+        /*background: #d9d9d9;*/
+        background: #f0ff01;
+    }
+
+    .rozita_calendar .tam_req_type_@(((int)Enums.RequestTypes.ReserveCancellation).ToString()) {
+        background: #f6b4ff;
+    }
+
+    .rozita_calendar .tam_req_type_@(((int)Enums.RequestTypes.CancelWaiting).ToString()) {
+        background: #f6b4ff;
+    }
+
+    .rozita_calendar .tam_req_type_@(((int)Enums.RequestTypes.InvoiceRequest).ToString()) {
+        background: #eedc8b;
+    }
+
+    .rozita_calendar .tam_res_type_@(((int)Enums.ResponseTypes.ReservationResponse).ToString()) {
+
+    }
+
+    .rozita_calendar .tam_res_type_@(((int)Enums.ResponseTypes.CorrectionResponse).ToString()) {
+
+    }
+
+    .rozita_calendar .tam_res_type_@(((int)Enums.ResponseTypes.CancelationResponse).ToString()) {
+        background: #e317ff;
+    }
+
+    .rozita_calendar .tam_res_type_@(((int)Enums.ResponseTypes.Invoice).ToString()) {
+        background: #a59759;
+    }
+
+    .rozita_calendar .tam_res_type_@(((int)Enums.ResponseTypes.Others).ToString()) {
+        background: #00b0f0;
+    }
+
+    .rozita_calendar .tam_res_state_@(((int)Enums.ResponseStates.Confirm).ToString()) {
+        background: #65fd6e;
+    }
+
+    .rozita_calendar .tam_res_state_@(((int)Enums.ResponseStates.HalfConfirm).ToString()) {
+        background: #adc326
+    }
+
+    .rozita_calendar .tam_res_state_@(((int)Enums.ResponseStates.Reject).ToString()) {
+        background: #f37c8b;
+    }
+
+    .rozita_calendar .tam_res_state_@(((int)Enums.ResponseStates.Waiting).ToString()) {
+        /*background: #ffc817;*/
+        background: #f0ff01;
+    }
+
+    .rozita_calendar .tam_res_approved {
+        background: #0f9517;
+    }
+
+    .search-result {
+
+    -webkit-transform: scale(1.1);
+  	-moz-transform: scale(1.1);
+  	-o-transform: scale(1.1);
+  	-moz-box-shadow:3px 5px 7px rgba(0,0,0,.7);
+  	-webkit-box-shadow: 3px 5px 7px rgba(0,0,0,.7);
+    -ms-box-shadow:3px 5px 7px rgba(0,0,0,.7);
+    box-shadow:3px 5px 7px rgba(0,0,0,.7);
+	cursor:pointer;
+    }
+
+	    .rozita_calendar .tam_tour {
+        /*background: #d3d3d3;*/
+    }
+
+    .rozita_calendar .tam_city {
+        background: #ededed;
+        /*border-width: 2px;*/
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+    }
+
+
+
+    .rozita_calendar .tam_hotel {
+    }
+
+    .rozita_calendar .tam_req {
+        /*border-right: 4px solid #db463c !important;*/
+    }
+
+    .rozita_calendar .tam_res {
+        /*border-right: 4px solid #555 !important;*/
+    }
+
+    .rozita_calendar .tour_title {
+        color: #555555;
+        font-weight: bold;
+    }
+
+    .highlighted {
+        background: #fffacd;
+    }
+
+    .tour-icon {
+        margin-left: 3px;
+        margin-right: 3px;
+    }
