@@ -1,0 +1,247 @@
+﻿<html>
+<head>
+<title>Rozita Calendar Test Page</title>
+
+    <script src="./lib/jquery-2.1.4.min.js"></script>
+    <script src="./lib/moment.min.js"></script>
+    <script src="./lib/moment-jalaali.js"></script>
+    <script src="./rozita-calendar.js"></script>
+    <script>
+        
+        $(function() {
+
+            var options = {
+                startDate: "2023/01/01",
+                finishDate: "2023/03/29",
+                isRtl: true,
+                eventOffset: 2,
+                tableBorder: 1,
+                events: [
+                    {
+                        id: "italy_trip_01",
+                        startDate:"2023/01/10",
+                        finishDate:"2023/01/17",
+                        title: "Italy Trip",
+                        order: 10,
+                        cssClass: 'trip',
+                        tooltip: "tooltip text",
+                        link: null,
+                        linkTarget: null,
+                        noWrap : true,
+                        extra: null,
+                        childs : [
+                            {
+                                id: "italy_milan_trip_01",
+                                startDate:"2023/01/10",
+                                finishDate:"2023/01/13",
+                                title: "Milan",
+                                order: 10,
+                                cssClass: 'city_trip',
+                                tooltip: "milan text",
+                                link: null,
+                                linkTarget: null,
+                                noWrap : false,
+                                extra: null
+                            },
+                            {
+                                id: "italy_rome_trip_01",
+                                startDate:"2023/01/14",
+                                finishDate:"2023/01/15",
+                                title: "Rome",
+                                order: 10,
+                                cssClass: 'city_trip',
+                                tooltip: "tooltip text",
+                                link: null,
+                                linkTarget: null,
+                                noWrap : false,
+                                extra: null
+                            },
+                            {
+                                id: "italy_venice_trip_01",
+                                startDate:"2023/01/16",
+                                finishDate:"2023/01/17",
+                                title: "venice",
+                                order: 10,
+                                cssClass: 'city_trip',
+                                tooltip: "tooltip text",
+                                link: null,
+                                linkTarget: null,
+                                noWrap : false,
+                                extra: null
+                            }
+                        ]
+                    },
+                    {
+                        id: "norway_trip_01",
+                        startDate:"2023/01/15",
+                        finishDate:"2023/01/25",
+                        title: "Norway Trip",
+                        order: 15,
+                        cssClass: 'trip',
+                        tooltip: "tooltip text",
+                        link: null,
+                        linkTarget: null,
+                        noWrap : false,
+                        extra: null,
+                    },
+                    {
+                        id: "iran_trip_01",
+                        startDate:"2023/01/21",
+                        finishDate:"2023/02/05",
+                        title: "Iran Trip",
+                        order: 10,
+                        cssClass: 'trip',
+                        tooltip: "tooltip text",
+                        link: null,
+                        linkTarget: null,
+                        noWrap : false,
+                        extra: null,
+                        childs: [
+                            {
+                                id: "iran_yazd_trip_01",
+                                startDate:"2023/01/29",
+                                finishDate:"2023/02/05",
+                                title: "Yazd Province",
+                                order: 10,
+                                cssClass: 'city_trip',
+                                tooltip: null,
+                                link: null,
+                                linkTarget: null,
+                                noWrap : false,
+                                extra: null,
+                            },
+                            {
+                                id: "iran_yazd_trip_01",
+                                startDate:"2023/01/29",
+                                finishDate:"2023/02/01",
+                                title: "Meybod",
+                                order: 10,
+                                cssClass: 'region_trip',
+                            },
+                            {
+                                id: "iran_yazd_trip_01",
+                                startDate:"2023/02/02",
+                                finishDate:"2023/02/05",
+                                title: "Yazd",
+                                order: 10,
+                                cssClass: 'region_trip',
+                            }
+                        ]
+                    },
+                    {
+                        id: "canada_trip_01",
+                        startDate:"2023/01/20",
+                        finishDate:"2023/02/01",
+                        title: "Canada Trip",
+                        order: 30,
+                        cssClass: 'trip',
+                        tooltip: "tooltip text",
+                        link: null,
+                        linkTarget: null,
+                        noWrap : false,
+                        extra: null,
+                    }
+                ],
+                callbacks: {
+                    cellClicked: null,
+                    tableRendered: null,
+                    eventsSearchingStarted: null,
+                    eventsSearchingFinished: null
+                },
+                locals: [
+                    {
+                        lang: "en",
+                        showDayOfWeek : true,
+                        showMonth: true,
+                        showMonthNumber: true,
+                        showDay: true,
+                        showYear: true,
+                        customFormat1: null,
+                        customFormat2: null
+                    },
+                    {
+                        lang: "fa",
+                        showDayOfWeek : true,
+                        showMonth: true,
+                        showMonthNumber: true,
+                        showDay: true,
+                        showYear: true,
+                        customFormat1: null,
+                        customFormat2: null
+                    }
+                ],
+                specialDays: [
+                    {
+                        date: "2023/01/01",
+                        title: "New Year's Day",
+                        cssClass: null
+                    },
+                    {
+                        date: "2023/01/16",
+                        title: "Blue Monday",
+                        cssClass: "blue_monday"
+                    },
+                    {
+                        date: "2023/01/22",
+                        title: "Chinese New Year",
+                        cssClass: 'chinese_new_year'
+                    },
+                    {
+                        date: "2023/02/14",
+                        title: "Valentines Day",
+                        cssClass: null
+                    }
+                ]
+            };
+
+            $("#calendar").rozitaCalendar(options);
+
+        });
+
+        
+    </script>
+
+    <link href="./style.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .rozita_calendar * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14 !important;
+        }
+
+        .rozita_calendar .spd_day {
+            background-color: #f0f8ff;
+        }
+
+        .rozita_calendar .chinese_new_year {
+            background-color: #ff8ba2 !important;
+        }
+
+        .rozita_calendar .trip {
+            border: 2px solid #704f0b;
+            background-color: rgb(219, 194, 57);
+        }
+
+        .rozita_calendar .city_trip{
+            border: 2px solid #ba9329;
+            background-color: rgb(249, 227, 102);
+        }
+
+        .rozita_calendar .region_trip{
+            border: 2px solid #d1ab42;
+            background-color: rgb(253, 237, 144);
+        }
+
+        
+    </style>
+
+</head>
+
+<body>
+
+    <div id="calendar">
+    </div>
+
+</body>
+
+</html>

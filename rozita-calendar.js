@@ -1,10 +1,15 @@
-/// <reference path="../../../scripts/typing/moment/moment.d.ts" />
-/// <reference path="../../../scripts/typing/jquery/jquery.d.ts" />
+/// <reference path="./typing/moment/moment.d.ts" />
+/// <reference path="./typing/jquery/jquery.d.ts" />
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
     return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -14,6 +19,7 @@ var __extends = (this && this.__extends) || (function () {
 //version : 1.0.0.0
 //company: silverpath
 //author: Mehdi Radi
+//summary: This is a javascript library for show event on table automaticlly
 var SilverPath;
 (function (SilverPath) {
     var Components;
@@ -101,6 +107,9 @@ var SilverPath;
             function RozitaCalendar(element, options) {
                 this.lastRowNumber = 0;
                 this.lastDataRowNumber = 0;
+                if (element.length == 0) {
+                    throw "Element '" + element.selector + "' was not found on the page.";
+                }
                 // Merge options
                 var mergedOptions = $.extend(RozitaCalendar.defaultOptions, options);
                 this.options = mergedOptions;
@@ -134,6 +143,7 @@ var SilverPath;
                     if (this.isFunction(this.options.callbacks.tableRendered)) {
                         this.options.callbacks.tableRendered(eArgs);
                     }
+                    //if callback field is function name
                     else {
                         this.executeFunctionByName(this.options.callbacks.tableRendered, window, eArgs);
                     }
@@ -167,6 +177,7 @@ var SilverPath;
                         if (_this.isFunction(_this.options.callbacks.eventsSearchingStarted)) {
                             _this.options.callbacks.eventsSearchingStarted(eArgs);
                         }
+                        //if callback field is function name
                         else {
                             _this.executeFunctionByName(_this.options.callbacks.eventsSearchingStarted, window, eArgs);
                         }
@@ -207,6 +218,7 @@ var SilverPath;
                         if (_this.isFunction(_this.options.callbacks.eventsSearchingFinished)) {
                             _this.options.callbacks.eventsSearchingFinished(eArgs);
                         }
+                        //if callback field is function name
                         else {
                             _this.executeFunctionByName(_this.options.callbacks.eventsSearchingFinished, window, eArgs);
                         }
@@ -283,6 +295,7 @@ var SilverPath;
                         if (_this.isFunction(_this.options.callbacks.cellClicked)) {
                             _this.options.callbacks.cellClicked(eArgs);
                         }
+                        //if callback field is function name
                         else {
                             //window[this.options.callbacks.cellClicked](eArgs);
                             _this.executeFunctionByName(_this.options.callbacks.cellClicked, window, eArgs);
@@ -912,6 +925,7 @@ var SilverPath;
                         this.addMonthClassToCell(row, monthNum);
                         this.addDayOfWeekClassToCell(row, dayOfWeekName);
                     }
+                    //اگر زبان غیر فارسی باشد
                     else {
                         var monthNum = dCurrent.locale(local.lang).format("M");
                         if (headRowType == headerRowTypes.month) {
@@ -1348,11 +1362,13 @@ var SilverPath;
                 var newValue = "";
                 for (var i = 0; i < number.length; i++) {
                     var ch = number.charCodeAt(i);
-                    if (ch >= 1776 && ch <= 1785) {
+                    if (ch >= 1776 && ch <= 1785) // For Persian digits.
+                     {
                         var newChar = ch - 1728;
                         newValue = newValue + String.fromCharCode(newChar);
                     }
-                    else if (ch >= 1632 && ch <= 1641) {
+                    else if (ch >= 1632 && ch <= 1641) // For Arabic & Unix digits.
+                     {
                         var newChar = ch - 1584;
                         newValue = newValue + String.fromCharCode(newChar);
                     }
@@ -1391,7 +1407,7 @@ var SilverPath;
                         showDay: true,
                         showYear: true,
                         customFormat1: null,
-                        customFormat2: null,
+                        customFormat2: null
                     }
                 ],
                 events: null,
@@ -1478,4 +1494,3 @@ var SilverPath;
         return new SilverPath.Components.RozitaCalendar(this, options);
     };
 })(jQuery);
-//# sourceMappingURL=rozita-calendar.js.map

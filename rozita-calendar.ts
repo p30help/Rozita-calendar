@@ -1,5 +1,5 @@
-﻿/// <reference path="../../../scripts/typing/moment/moment.d.ts" />
-/// <reference path="../../../scripts/typing/jquery/jquery.d.ts" />
+﻿/// <reference path="./typing/moment/moment.d.ts" />
+/// <reference path="./typing/jquery/jquery.d.ts" />
 
 //name: Rozita Calendar
 //version : 1.0.0.0
@@ -141,10 +141,18 @@ module SilverPath.Components {
         lastDataRowNumber: number = 0;
 
         constructor(element: JQuery, options: RozitaCalendarOptions) {
+
+            if(element.length == 0)
+            {
+                throw "Element '" + element.selector  + "' was not found on the page.";
+            }
+
             // Merge options
             var mergedOptions: RozitaCalendarOptions = $.extend(RozitaCalendar.defaultOptions, options);
             this.options = mergedOptions;
             this.element = element;
+
+
             if (options != null) {
                 this.onCreate();
             }
