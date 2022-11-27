@@ -3,9 +3,8 @@
 
 //name: Rozita Calendar
 //version : 1.0.0.0
-//company: silverpath
-//author: Mehdi Radi
-//summary: This is a javascript library for show event on table automaticlly
+//author: Mahdi Radi
+//summary: jQuery library for showing calendar and events on table automaticlly
 
 module SilverPath.Components {
 
@@ -41,11 +40,6 @@ module SilverPath.Components {
         public static headerDayOfWeekRowClassName = "day_of_week_row";
         public static headerCustomFormat1RowClassName = "custom_format_1_row";
         public static headerCustomFormat2RowClassName = "custom_format_2_row";
-
-        //public static headerSpringMonthCellClassName = "cell_root";
-        //public static headerSummerMonthsCellClassName = "cell_root";
-        //public static headerAutumnMonthsCellClassName = "cell_root";
-        //public static headerWinterMonthCellClassName = "cell_root";
 
         public static headerSpecialDayCellClassName = "spd_day";
 
@@ -99,9 +93,6 @@ module SilverPath.Components {
     }
 
     export class RozitaCalendar {
-
-
-
         // Default Options
         static defaultOptions: RozitaCalendarOptions =
         {
@@ -198,24 +189,6 @@ module SilverPath.Components {
                 }
             }
         }
-
-        //private setOptions() {
-        //    this.element.data(RozitaCalendarConst.optionsDataName, this.options);
-        //}
-
-        //private loadOptions() {
-        //    var opt = this.element.data(RozitaCalendarConst.optionsDataName);
-        //    if (opt != null) {
-        //        this.options = opt;
-        //    }
-        //}
-
-        //private existOptions() {
-        //    if (this.element.data(RozitaCalendarConst.optionsDataName) != null) {
-        //        return true;
-        //    }
-        //    return false;
-        //}
 
         public search(searchText: string): void {
 
@@ -314,8 +287,6 @@ module SilverPath.Components {
             if (this.options.events == null) {
                 return;
             }
-
-
         
             //sort event items by date & order field
             this.sortEvents(this.options.events);
@@ -397,17 +368,14 @@ module SilverPath.Components {
             var childLevel = this.countEventMaxChildsLevel(item);
 
             var dataRowNumber = 1;
-            //console.time("find empty row");
             //پیدا کردن جای خالی در جدول از ردیف اول
             //todo کندی این قسمت باید بررسی شود
             var startRowNumber = this.findEmptyRowNumber(item.startDate, item.finishDate, dataRowNumber, childLevel);
-            //console.timeEnd("find empty row");
 
             //append base (root) cell
             this.putEventSegmentToCalendar(item.id, item, startRowNumber, cellTypes.root);
 
             //append childs cell
-            //console.time("put child cell");
 
             //startRowNumber = startRowNumber + 1;
             if (item.childs != null) {
@@ -415,14 +383,10 @@ module SilverPath.Components {
                     this.putEventSegmentToCalendar(item.id, childItem, startRowNumber, cellTypes.child);
                 });
             }
-            //console.timeEnd("put child cell");
-
-           // console.time("put offset");
             //append offset row after rows
             for (var i = 1; i <= this.options.eventOffset; i++) {
                 this.putOffsetToCells(item, startRowNumber);
             }
-            //console.timeEnd("put offset");
 
         }
 
@@ -623,8 +587,6 @@ module SilverPath.Components {
                     continue;
                 }
 
-                //cell.attr(RozitaCalendarConst.cellOffsetAttribName, "true");
-                //cell.attr(RozitaCalendarConst.cellHasUsedAttribName, "true");
                 cell.attr(RozitaCalendarConst.cellRootIdAttribName, item.id);
                 cell.attr(RozitaCalendarConst.cellTypeAttribName, cellTypes[cellTypes.offset].toString());
             }
@@ -640,13 +602,7 @@ module SilverPath.Components {
 
         //متدی که یکی یکی ردیف ها را چک میکند تا بتواند اولین ردیف خالی برای جایگذاری آیتم ها را پیدا کند
         private findEmptyRowNumber(startDate: string, finishDate: string, dataRowNum: number, childLevels: number): number {
-
-            //for (var i = rowNum; i <= rowNum + childLevels; i++) {
-            //    if (this.isDataRowExisted(i) == false) {
-            //        this.elmTbody.append(this.createNewEventRow());
-            //    }
-            //}
-
+            
             var crnDataRowNumber = dataRowNum;
             while (true) {
 
@@ -722,32 +678,23 @@ module SilverPath.Components {
             for (var j = dataRowNum; j <= dataRowNum + childLevels; j++) {
 
                 var tr;
-                console.time("while");
 
                 //این قسمت از کد به تعداد نامحدود ردیف ایجاد میکند تا در نهایت شماره ی ردیف مورد نظر یافت شود در جدول
                 //todo کندی این قسمت باید بررسی شود
                 while (true) {
-                   // console.time("getDataTr");
 
                     tr = this.getDataTr(j);
-                    //console.timeEnd("getDataTr");
-
                     if (tr != null) {
                         break;
                     } else {
-                        console.time("createNewEventRow");
                         //todo کندی این قسمت باید بررسی شود
                         this.elmTbody.append(this.createNewEventRow());
-                        console.timeEnd("createNewEventRow");
 
                     }
                 }
-                console.timeEnd("while");
-
 
                 //گرفتن تعداد روز از شروع تا پایان
                 var diffDays = dEventFinish.diff(dEventStart, 'days');
-                console.time("for");
 
                 for (var i = 0; i <= diffDays; i++) {
                     var dCurrent = moment(dEventStart).add(i, 'days');
@@ -765,9 +712,6 @@ module SilverPath.Components {
                     //    return false;
                     //}
                 }
-                console.timeEnd("for");
-
-
             }
 
             return true;
@@ -820,32 +764,6 @@ module SilverPath.Components {
             return true;
         }
 
-        /*
-        private hasCellData(cell: JQuery): boolean {
-            if (cell == null) {
-                return false;
-            }
-
-            if (cell.attr(RozitaCalendarConst.cellTypeAttribName)) {
-                return false;
-            }
-
-            return true;
-        }
-
-        private hasCellOffset(cell: JQuery): boolean {
-            if (cell == null) {
-                return false;
-            }
-
-            if (cell.attr(RozitaCalendarConst.cellTypeAttribName) == "offset") {
-                return false;
-            }
-
-            return true;
-        }
-        */
-
         //علامت گزاری خونه های جدول جهت ادغام
         private markAsMerge(firstCell: JQuery, cell: JQuery) {
 
@@ -853,7 +771,6 @@ module SilverPath.Components {
             var sourceId = firstCell.attr(RozitaCalendarConst.cellUniqueIdAttribName);
 
             cell.attr(RozitaCalendarConst.cellMustMergedAttribName, sourceId);
-            //cell.attr(RozitaCalendarConst.cellHasDataAttribName, "true");
             cell.attr(RozitaCalendarConst.cellTypeAttribName, "data");
         }
 
@@ -867,40 +784,14 @@ module SilverPath.Components {
 
                 var cell = $(elm);
 
-                //if (cell.attr(RozitaCalendarConst.cellMergeCheckedAttribName) == null) {
-
                 var uid = cell.attr(RozitaCalendarConst.cellUniqueIdAttribName);
                 var mergItems = this.element.find("[" + RozitaCalendarConst.cellMustMergedAttribName + " = '" + uid + "']");
                 if (mergItems.length > 0) {
                     mergItems.remove();
                     cell.attr("colspan", mergItems.length + 1);
-                    //cell.attr(RozitaCalendarConst.cellMergeCheckedAttribName, "true");
-
-                }
-                //}
-
-            });
-        }
-
-        /*
-        //TODO
-        private unmergeCells() {
-            this.element.find("[colspan]").each((index, elm) => {
-                var cell = $(elm);
-                var colspan = Number(cell.attr("colspan"));
-                var date = cell.attr(RozitaCalendarConst.cellDateAttribName);
-                var tr = this.getTrByCell(cell);
-                if (colspan > 1) {
-                    for (var i = 1; i <= colspan; i++) {
-                        var dCurrent = moment(date).add(i, 'days');
-
-                        var newTd = this.createNewTd(tr, dCurrent);
-                        cell.after(newTd);
-                    }
                 }
             });
         }
-        */
 
         //حذف تمامی دیتا ها از جدول
         public clearEvents() {
@@ -917,7 +808,6 @@ module SilverPath.Components {
         //پاک کردن اطلاعات یک خونه
         private clearCell(cell: JQuery): void {
             cell.removeAttr(RozitaCalendarConst.cellTypeAttribName);
-            //cell.removeAttr(RozitaCalendarConst.cellHasDataAttribName);
             cell.removeAttr(RozitaCalendarConst.cellFirstAttribName);
             cell.removeAttr(RozitaCalendarConst.cellSourceIdAttribName);
             cell.removeAttr(RozitaCalendarConst.cellRootIdAttribName);
@@ -1033,7 +923,6 @@ module SilverPath.Components {
         //حذف یک دیتا از جدول بر اساس آی دی خود خونه ها
         //TODO
         private removeEventByUid(uid: string) {
-
         }
 
         //رندر کردن و دوباره ساختن کل جدول
@@ -1463,47 +1352,6 @@ module SilverPath.Components {
             }
 
             return maximumReprat;
-
-            /*
-            var c = item.childs;
-            if (c != null && c.length > 0) {
-                level++;
-
-                c = c[0].childs;
-                if (c != null && c.length > 0) {
-                    level++;
-
-                    c = c[0].childs;
-                    if (c != null && c.length > 0) {
-                        level++;
-
-                        c = c[0].childs;
-                        if (c != null && c.length > 0) {
-                            level++;
-
-                            c = c[0].childs;
-                            if (c != null && c.length > 0) {
-                                level++;
-
-                                c = c[0].childs;
-                                if (c != null && c.length > 0) {
-                                    level++;
-
-                                    c = c[0].childs;
-                                    if (c != null && c.length > 0) {
-                                        level++;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            return level;
-            */
-
-
         }
 
         //متدی که از تاریخ و تا تاریخ را میگیرد و آنها را مجزا شده و روز به روز تحویل میدهد
@@ -1873,12 +1721,8 @@ declare namespace moment {
 
 
 interface JQuery {
-
     rozitaCalendar: (options: SilverPath.Components.RozitaCalendarOptions) => void;
     fixedtableheader();
-    //SpCalendar();
-    //SpCalendar(obj?: any);
-    //SpCalendar(options?: RozitaCalendarOptions);
 }
 
 
@@ -1886,11 +1730,6 @@ interface JQuery {
     $.fn.rozitaCalendar = function (options) {
         //افزودن زبان فارسی به تقویم
         moment.loadPersian();
-
-        //$(function () {
-        //    $('.rozita_calendar table').fixedtableheader();
-        //});
-
         return new SilverPath.Components.RozitaCalendar(this, options);
 
     }
